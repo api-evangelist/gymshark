@@ -1,0 +1,130 @@
+generated: '2026-08-04'
+method: searched
+source: live probe of every Gymshark host discovered via DNS and the storefront markup
+note: >-
+  Gymshark publishes no developer portal and no product API. The only Gymshark host
+  serving real machine-readable discovery documents is auth.gymshark.com, the Auth0
+  tenant it operates on its own domain for customer accounts. Probed hosts with no
+  hits are recorded here so a later run does not re-litigate them. track.gymshark.com
+  is an SPA catch-all that answers HTTP 200 with an HTML shell for every /.well-known/*
+  path — every "200" it returned was rejected as a false positive and is recorded as
+  such below.
+hosts:
+- host: https://auth.gymshark.com
+  role: identity (OpenID Connect / OAuth 2.0 authorization server, Auth0 tenant)
+  documents:
+  - path: /.well-known/openid-configuration
+    spec: OpenID Connect Discovery 1.0
+    status: 200
+    content_type: application/json
+    file: gymshark-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    spec: RFC 8414 OAuth 2.0 Authorization Server Metadata
+    status: 200
+    content_type: application/json
+    file: gymshark-oauth-authorization-server.json
+  - path: /.well-known/jwks.json
+    spec: RFC 7517 JSON Web Key Set
+    status: 200
+    content_type: application/json
+    file: gymshark-jwks.json
+  - path: /.well-known/oauth-protected-resource
+    spec: RFC 9728 OAuth 2.0 Protected Resource Metadata
+    status: 404
+  - path: /.well-known/agent-card.json
+    spec: A2A Agent Card
+    status: 404
+  - path: /.well-known/security.txt
+    spec: RFC 9116
+    status: 404
+- host: https://support.gymshark.com
+  role: help centre (Intercom-hosted, served on a Gymshark subdomain)
+  documents:
+  - path: /llms.txt
+    spec: llms.txt
+    status: 200
+    content_type: text/plain
+    file: ../llms/gymshark-llms.txt
+  - path: /.well-known/security.txt
+    spec: RFC 9116
+    status: 200
+    content_type: text/plain
+    file: gymshark-support-security.txt
+    attribution: vendor
+    canonical: https://app.intercom.com/.well-known/security.txt
+    note: >-
+      This is Intercom's own security.txt served through the Gymshark help-centre
+      subdomain, not a Gymshark-authored disclosure policy — its Contact, Policy and
+      Canonical fields all point at Intercom and Bugcrowd. It is saved verbatim for
+      the record but is NOT counted as a Gymshark security.txt, and no SecurityTxt
+      pointer is wired for it. Gymshark's own disclosure program is the HackerOne VDP
+      captured in security/gymshark-vulnerability-disclosure.yml.
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://www.gymshark.com
+  role: primary storefront (Shopify + headless Next.js/OpenNext on AWS)
+  documents:
+  - path: /robots.txt
+    status: 200
+    note: 'declares "we use Shopify as our ecommerce platform"; sitemap at /sitemap.xml'
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /products.json
+    status: 403
+    note: the Shopify storefront products.json endpoint is blocked at the edge
+- host: https://track.gymshark.com
+  role: order tracking (single-page app)
+  rejected: true
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    accepted: false
+    reason: SPA catch-all returns an HTML shell (text/html) for every path — false positive
+  - path: /.well-known/agent-card.json
+    status: 200
+    accepted: false
+    reason: SPA catch-all returns an HTML shell — not an AgentCard
+  - path: /.well-known/agent.json
+    status: 200
+    accepted: false
+    reason: SPA catch-all returns an HTML shell — not an AgentCard
+  - path: /llms.txt
+    status: 200
+    accepted: false
+    reason: SPA catch-all returns an HTML shell — not llms.txt
+  - path: /openapi.json
+    status: 200
+    accepted: false
+    reason: SPA catch-all returns an HTML shell — not an OpenAPI document
+hosts_probed_no_hits:
+- careers.gymshark.com
+- row.gymshark.com
+- uk.gymshark.com
+hosts_not_resolving:
+- api.gymshark.com
+- developer.gymshark.com
+- status.gymshark.com
+- trust.gymshark.com
+- engineering.gymshark.com
+x-evidence:
+  fetched: '2026-08-04'
+  user_agent: APIEvangelist-Enrichment/1.0
+  method: HTTP GET, redirects followed, status and content-type recorded per path

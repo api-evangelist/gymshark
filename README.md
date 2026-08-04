@@ -42,5 +42,9 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Gymshark is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
+Gymshark is a British fitness apparel and accessories brand founded in 2012 in Birmingham, England, selling gym and workout clothing direct to consumers worldwide through gymshark.com, a set of regional storefronts and its Gymshark Shop and Gymshark Training mobile apps. Gymshark publishes no public developer portal, no developer documentation and no public product API; the only publicly discoverable machine-readable contract on its own hosts is the OpenID Connect / OAuth 2.0 authorization-server metadata served from auth.gymshark.com. Its engineering team publishes open-source Go, JavaScript and Swift libraries under the github.com/gymshark organization, and it runs a public vulnerability disclosure program on HackerOne.
+
+- https://www.gymshark.com/
+- https://github.com/gymshark
+- https://hackerone.com/gymshark
 - https://forgeglobal.com/gymshark_stock/

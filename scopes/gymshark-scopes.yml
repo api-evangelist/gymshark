@@ -1,0 +1,72 @@
+generated: '2026-08-04'
+method: searched
+source: https://auth.gymshark.com/.well-known/openid-configuration
+docs: null
+note: >-
+  Read verbatim from the `scopes_supported` array of Gymshark's own OpenID Connect
+  Discovery document. Gymshark publishes no scope/permission reference page, so there
+  are no product- or resource-level scopes to add — every scope advertised here is a
+  standard OpenID Connect / Auth0 identity scope covering the customer profile, not a
+  Gymshark business API. Scope descriptions below are the OpenID Connect Core 1.0 §5.4
+  / Auth0 definitions of these standard scopes, not Gymshark-authored copy.
+schemes:
+- name: gymshark-oidc
+  source: well-known/gymshark-openid-configuration.json
+  issuer: https://auth.gymshark.com/
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://auth.gymshark.com/authorize
+    tokenUrl: https://auth.gymshark.com/oauth/token
+  - flow: clientCredentials
+    tokenUrl: https://auth.gymshark.com/oauth/token
+  - flow: implicit
+    authorizationUrl: https://auth.gymshark.com/authorize
+  - flow: deviceCode
+    deviceAuthorizationUrl: https://auth.gymshark.com/oauth/device/code
+    tokenUrl: https://auth.gymshark.com/oauth/token
+scopes:
+- scope: openid
+  description: Request an ID token and perform OpenID Connect authentication.
+  standard: OpenID Connect Core 1.0
+- scope: profile
+  description: Request the default profile claims (name, family_name, given_name, nickname,
+    picture, created_at).
+  standard: OpenID Connect Core 1.0
+- scope: offline_access
+  description: Request a refresh token so the client can obtain new access tokens without
+    the user present.
+  standard: OpenID Connect Core 1.0
+- scope: name
+  description: Request the `name` claim.
+- scope: given_name
+  description: Request the `given_name` claim.
+- scope: family_name
+  description: Request the `family_name` claim.
+- scope: nickname
+  description: Request the `nickname` claim.
+- scope: email
+  description: Request the `email` claim.
+  standard: OpenID Connect Core 1.0
+- scope: email_verified
+  description: Request the `email_verified` claim.
+- scope: picture
+  description: Request the `picture` claim.
+- scope: created_at
+  description: Request the account `created_at` claim.
+- scope: identities
+  description: Request the linked-identity array for the account (Auth0 extension).
+- scope: phone
+  description: Request the `phone_number` and `phone_number_verified` claims.
+  standard: OpenID Connect Core 1.0
+- scope: address
+  description: Request the `address` claim.
+  standard: OpenID Connect Core 1.0
+coverage:
+  scopes_total: 14
+  resource_scopes: 0
+  identity_scopes: 14
+x-evidence:
+  fetched: '2026-08-04'
+  url: https://auth.gymshark.com/.well-known/openid-configuration
+  http_status: 200
+  content_type: application/json

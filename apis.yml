@@ -1,18 +1,62 @@
 aid: gymshark
 name: Gymshark
-description: 'Gymshark is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Gymshark is a British fitness apparel and accessories brand founded in
+  2012 in Birmingham, England, selling gym and workout clothing direct to consumers
+  worldwide through gymshark.com, a set of regional storefronts (uk., eu., row., de.,
+  fr., ca., au. and others) and its Gymshark Shop and Gymshark Training mobile apps.
+  The storefront runs on Shopify behind a headless Next.js/OpenNext front end deployed
+  on AWS, and customer identity is handled by an Auth0 tenant Gymshark operates on
+  its own domain at auth.gymshark.com. Gymshark publishes no public developer portal,
+  no developer documentation and no public product API; the only publicly discoverable
+  machine-readable contract on its own hosts is the OpenID Connect / OAuth 2.0 authorization-server
+  metadata served from auth.gymshark.com. Its engineering team does publish open-source
+  Go, JavaScript and Swift libraries under the github.com/gymshark organization, and
+  it runs a public vulnerability disclosure program on HackerOne.'
 url: https://raw.githubusercontent.com/api-evangelist/gymshark/refs/heads/main/apis.yml
+image: https://cdn.shopify.com/s/files/1/0098/8822/files/gymshark_social_banner_1200x1200.jpg?v=1549554764
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-04'
 modified: '2026-08-04'
 tags:
 - Company
-apis: []
+- Retail
+- E-Commerce
+- Apparel
+- Fitness
+- Consumer
+- Direct To Consumer
+- Identity
+- OpenID Connect
+apis:
+- name: Gymshark Identity (OpenID Connect)
+  description: 'The OpenID Connect / OAuth 2.0 authorization server Gymshark operates
+    on its own domain at auth.gymshark.com (an Auth0 tenant) for Gymshark customer
+    accounts across the web storefronts and the Gymshark Shop and Gymshark Training
+    mobile apps. It is not a documented, self-serve developer API — Gymshark publishes
+    no developer portal, client registration guide or API reference for it — but the
+    authorization-server and OpenID provider metadata are served anonymously at the
+    RFC 8414 / OpenID Connect Discovery well-known paths, so the endpoints, grant types,
+    response types, scopes and claims are publicly discoverable and machine-readable.'
+  humanURL: https://auth.gymshark.com/.well-known/openid-configuration
+  baseURL: https://auth.gymshark.com/
+  tags:
+  - Identity
+  - Authentication
+  - OpenID Connect
+  - OAuth
+  properties:
+  - type: OpenIDConnect
+    url: https://auth.gymshark.com/.well-known/openid-configuration
+  - type: Authentication
+    url: authentication/gymshark-authentication.yml
+  - type: OAuthScopes
+    url: scopes/gymshark-scopes.yml
+  - type: WellKnown
+    url: well-known/gymshark-well-known.yml
+  - type: Conformance
+    url: conformance/gymshark-conformance.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +64,55 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
+  url: https://www.gymshark.com/
+- type: Blog
+  url: https://www.gymshark.com/blog
+- type: Support
+  url: https://support.gymshark.com/
+- type: HelpCenter
+  url: https://support.gymshark.com/en/
+- type: TermsOfService
+  url: https://www.gymshark.com/pages/terms-and-conditions
+- type: PrivacyPolicy
+  url: https://www.gymshark.com/pages/privacy-policy
+- type: CookiePolicy
+  url: https://www.gymshark.com/pages/cookie-policy
+- type: SignUp
+  url: https://www.gymshark.com/account/register
+- type: Login
+  url: https://www.gymshark.com/account/login
+- type: GitHubOrganization
+  url: https://github.com/gymshark
+- type: Careers
+  url: https://careers.gymshark.com/
+- type: About
+  url: https://www.gymshark.com/pages/about-us
+- type: Sustainability
+  url: https://www.gymshark.com/pages/sustainability
+- type: SecondaryMarket
   url: https://forgeglobal.com/gymshark_stock/
+- type: OpenIDConnect
+  url: https://auth.gymshark.com/.well-known/openid-configuration
+- type: WellKnown
+  url: well-known/gymshark-well-known.yml
+- type: Authentication
+  url: authentication/gymshark-authentication.yml
+- type: OAuthScopes
+  url: scopes/gymshark-scopes.yml
+- type: Conformance
+  url: conformance/gymshark-conformance.yml
+- type: LLMsTxt
+  url: llms/gymshark-llms.txt
+- type: Packages
+  url: packages/gymshark-packages.yml
+- type: DomainSecurity
+  url: security/gymshark-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/gymshark-vulnerability-disclosure.yml
+- type: Security
+  url: https://hackerone.com/gymshark
+x-enrichment:
+  date: '2026-08-04'
+  status: enriched
+  artifacts_added: 12
+  pass: local-v1

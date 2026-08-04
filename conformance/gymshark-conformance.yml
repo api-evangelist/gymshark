@@ -1,0 +1,103 @@
+generated: '2026-08-04'
+method: derived
+source: well-known/gymshark-openid-configuration.json
+note: >-
+  Derived from the metadata Gymshark's own authorization server publishes. Gymshark
+  makes no public conformance or certification claims of its own — there is no trust
+  centre, no compliance page and no published certification list — so nothing here is
+  a provider assertion. Each entry below is an observation about the one machine-readable
+  surface Gymshark exposes. No `Compliance` pointer is wired, because Gymshark publishes
+  no compliance program.
+standards:
+- id: openid-connect-discovery-1.0
+  conforms: true
+  evidence: 'HTTP 200 JSON at https://auth.gymshark.com/.well-known/openid-configuration
+    with issuer, authorization_endpoint, token_endpoint, jwks_uri, response_types_supported,
+    subject_types_supported and id_token_signing_alg_values_supported all present'
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: true
+  evidence: HTTP 200 JSON at https://auth.gymshark.com/.well-known/oauth-authorization-server
+- id: rfc7517-jwks
+  conforms: true
+  evidence: HTTP 200 JSON Web Key Set at https://auth.gymshark.com/.well-known/jwks.json
+- id: oauth2-authorization-code
+  conforms: true
+  evidence: grant_types_supported includes authorization_code; authorization_endpoint
+    and token_endpoint published
+- id: rfc7636-pkce
+  conforms: true
+  evidence: code_challenge_methods_supported = [S256, plain]
+  caveat: '`plain` is still advertised; OAuth 2.1 permits only S256'
+- id: rfc8628-device-authorization-grant
+  conforms: true
+  evidence: device_authorization_endpoint published; grant_types_supported includes
+    urn:ietf:params:oauth:grant-type:device_code
+- id: rfc7009-token-revocation
+  conforms: true
+  evidence: revocation_endpoint https://auth.gymshark.com/oauth/revoke
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: registration_endpoint https://auth.gymshark.com/oidc/register
+- id: rfc8693-token-exchange
+  conforms: true
+  evidence: grant_types_supported includes urn:ietf:params:oauth:grant-type:token-exchange
+- id: rfc9449-dpop
+  conforms: true
+  evidence: dpop_signing_alg_values_supported = [ES256]
+- id: oidc-backchannel-logout-1.0
+  conforms: true
+  evidence: backchannel_logout_supported = true, backchannel_logout_session_supported
+    = true
+- id: ciba-client-initiated-backchannel-authentication
+  conforms: true
+  evidence: backchannel_authentication_endpoint published; backchannel_token_delivery_modes_supported
+    = [poll]
+- id: oauth2.1
+  conforms: false
+  evidence: implicit and password (ROPC) grants are still advertised and `plain` remains
+    in code_challenge_methods_supported — all three are removed or forbidden by OAuth
+    2.1
+- id: rfc9700-oauth2-security-bcp
+  conforms: false
+  evidence: implicit and resource-owner-password-credentials grants advertised, contrary
+    to the OAuth 2.0 Security Best Current Practice
+- id: fapi-2.0
+  conforms: false
+  evidence: no FAPI profile claimed or advertised; mTLS / certificate-bound tokens not
+    advertised (no tls_client_certificate_bound_access_tokens)
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: no Gymshark-authored security.txt on any Gymshark host; the only security.txt
+    served (support.gymshark.com) is Intercom's, canonical to app.intercom.com
+- id: rfc9457-problem-details
+  conforms: unknown
+  evidence: no OpenAPI and no published error reference, so the error envelope cannot
+    be observed anonymously
+- id: openapi
+  conforms: false
+  evidence: no OpenAPI/Swagger document found on any Gymshark host (probed /openapi.json,
+    /openapi.yaml, /swagger.json, /v1/openapi.json, /api-docs, /docs, /redoc across
+    www., auth., support., row., uk., careers., store., app., training.)
+- id: asyncapi
+  conforms: false
+  evidence: no event, streaming or webhook surface is published to the public
+- id: a2a-agent-card
+  conforms: false
+  evidence: /.well-known/agent-card.json and /.well-known/agent.json return 404 on every
+    resolving Gymshark host (track.gymshark.com's 200s are SPA HTML shells, rejected)
+- id: mcp
+  conforms: false
+  evidence: no hosted MCP server advertised or discoverable
+x-evidence:
+  fetched: '2026-08-04'
+  hosts_probed:
+  - www.gymshark.com
+  - auth.gymshark.com
+  - support.gymshark.com
+  - careers.gymshark.com
+  - row.gymshark.com
+  - uk.gymshark.com
+  - track.gymshark.com
+  - store.gymshark.com
+  - app.gymshark.com
+  - training.gymshark.com

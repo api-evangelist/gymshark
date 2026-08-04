@@ -1,0 +1,122 @@
+generated: '2026-08-04'
+method: searched
+source: https://github.com/gymshark (verified against registry.npmjs.org, proxy.golang.org
+  and each repository's Package.swift)
+note: >-
+  Gymshark ships no client SDK for a Gymshark API, because Gymshark publishes no public
+  API. What the github.com/gymshark organization does publish is a set of first-party
+  general-purpose open-source libraries its engineering team maintains for its own
+  stack — Go utilities, an npm Datadog wrapper, and Swift/iOS UI libraries. They are
+  catalogued here as genuine first-party published packages, but deliberately NOT wired
+  as `SDKs` in apis.yml: none of them is an API client for Gymshark, so counting them
+  toward the SDK ergonomics signal would misrepresent the provider.
+organization:
+  github: https://github.com/gymshark
+  verified_domain: gymshark.com
+  contact: engineering@gymshark.com
+  public_repos: 31
+packages:
+- language: javascript
+  registry: npm
+  name: '@gymshark/datadog-client'
+  version: 0.4.0
+  license: MIT
+  url: https://www.npmjs.com/package/@gymshark/datadog-client
+  repository: https://github.com/gymshark/datadog-client-js
+  install: npm install @gymshark/datadog-client
+  description: An opinionated wrapper for instantiating a client to push metrics and
+    logs to Datadog.
+  official: true
+  api_client: false
+- language: go
+  registry: go-modules
+  name: github.com/gymshark/go-hasher
+  url: https://pkg.go.dev/github.com/gymshark/go-hasher
+  repository: https://github.com/gymshark/go-hasher
+  install: go get github.com/gymshark/go-hasher
+  description: Hashing utility library for common use cases.
+  official: true
+  api_client: false
+- language: go
+  registry: go-modules
+  name: github.com/gymshark/go-easy-config
+  url: https://pkg.go.dev/github.com/gymshark/go-easy-config
+  repository: https://github.com/gymshark/go-easy-config
+  install: go get github.com/gymshark/go-easy-config
+  description: Configuration loading helper library.
+  official: true
+  api_client: false
+- language: go
+  registry: go-modules
+  name: github.com/gymshark/aws-go-isb-client
+  url: https://pkg.go.dev/github.com/gymshark/aws-go-isb-client
+  repository: https://github.com/gymshark/aws-go-isb-client
+  install: go get github.com/gymshark/aws-go-isb-client
+  description: Go client for AWS Innovation Sandbox (ISB).
+  official: true
+  api_client: true
+  api_client_for: AWS Innovation Sandbox (third-party API, not Gymshark's)
+- language: go
+  registry: go-modules
+  name: github.com/gymshark/mparticle-go-sdk
+  url: https://pkg.go.dev/github.com/gymshark/mparticle-go-sdk
+  repository: https://github.com/gymshark/mparticle-go-sdk
+  install: go get github.com/gymshark/mparticle-go-sdk
+  description: Go SDK for the mParticle Events API.
+  official: true
+  api_client: true
+  api_client_for: mParticle Events API (third-party API, not Gymshark's)
+- language: swift
+  registry: swift-package-manager
+  name: StackKit (gymshark/ios-stack-kit)
+  url: https://github.com/gymshark/ios-stack-kit
+  repository: https://github.com/gymshark/ios-stack-kit
+  install: '.package(url: "https://github.com/gymshark/ios-stack-kit.git", from: "1.0.0")'
+  description: The power of SwiftUI with UIKit — declarative layout for UIKit views.
+  official: true
+  api_client: false
+  stars: 163
+- language: swift
+  registry: swift-package-manager
+  name: gymshark/ios-card-scan
+  url: https://github.com/gymshark/ios-card-scan
+  repository: https://github.com/gymshark/ios-card-scan
+  install: '.package(url: "https://github.com/gymshark/ios-card-scan.git", from: "1.0.0")'
+  description: iOS credit/debit card scanner built on Apple's Vision framework.
+  official: true
+  api_client: false
+  stars: 34
+- language: swift
+  registry: swift-package-manager
+  name: gymshark/ios-constraint-kit
+  url: https://github.com/gymshark/ios-constraint-kit
+  repository: https://github.com/gymshark/ios-constraint-kit
+  install: '.package(url: "https://github.com/gymshark/ios-constraint-kit.git", from:
+    "1.0.0")'
+  description: Auto Layout constraint helpers for UIKit.
+  official: true
+  api_client: false
+coverage:
+  packages_total: 8
+  official: 8
+  gymshark_api_clients: 0
+x-evidence:
+  fetched: '2026-08-04'
+  checks:
+  - {registry: npm, url: 'https://registry.npmjs.org/@gymshark%2Fdatadog-client', http_status: 200}
+  - {registry: go-modules, url: 'https://proxy.golang.org/github.com/gymshark/go-hasher/@v/list',
+    http_status: 200}
+  - {registry: go-modules, url: 'https://proxy.golang.org/github.com/gymshark/go-easy-config/@v/list',
+    http_status: 200}
+  - {registry: go-modules, url: 'https://proxy.golang.org/github.com/gymshark/aws-go-isb-client/@v/list',
+    http_status: 200}
+  - {registry: go-modules, url: 'https://proxy.golang.org/github.com/gymshark/mparticle-go-sdk/@v/list',
+    http_status: 200}
+  - {registry: swift-package-manager, url: 'https://raw.githubusercontent.com/gymshark/ios-stack-kit/master/Package.swift',
+    http_status: 200}
+  - {registry: swift-package-manager, url: 'https://raw.githubusercontent.com/gymshark/ios-card-scan/master/Package.swift',
+    http_status: 200}
+  - {registry: swift-package-manager, url: 'https://raw.githubusercontent.com/gymshark/ios-constraint-kit/master/Package.swift',
+    http_status: 200}
+  registries_probed_no_first_party_hits: [PyPI, Maven Central, NuGet, RubyGems, Packagist,
+    crates.io, Terraform Registry]
