@@ -16,7 +16,7 @@ url: https://raw.githubusercontent.com/api-evangelist/gymshark/refs/heads/main/a
 image: https://cdn.shopify.com/s/files/1/0098/8822/files/gymshark_social_banner_1200x1200.jpg?v=1549554764
 x-type: company
 x-source: harvest:secondary-market
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-08-04'
 modified: '2026-08-04'
 tags:
