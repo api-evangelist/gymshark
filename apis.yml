@@ -26,6 +26,16 @@ tags:
 - Apparel
 - Fitness
 - Consumer
+- Direct to Consumer
+- Identity
+- OpenID Connect
+tags_raw:
+- Company
+- Retail
+- E-Commerce
+- Apparel
+- Fitness
+- Consumer
 - Direct To Consumer
 - Identity
 - OpenID Connect
@@ -42,6 +52,10 @@ apis:
   humanURL: https://auth.gymshark.com/.well-known/openid-configuration
   baseURL: https://auth.gymshark.com/
   tags:
+  - Identity
+  - Authentication
+  - OpenID Connect
+  tags_raw:
   - Identity
   - Authentication
   - OpenID Connect
