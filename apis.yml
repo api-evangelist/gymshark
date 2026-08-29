@@ -13,6 +13,17 @@ description: 'Gymshark is a British fitness apparel and accessories brand founde
   Go, JavaScript and Swift libraries under the github.com/gymshark organization, and
   it runs a public vulnerability disclosure program on HackerOne.'
 url: https://raw.githubusercontent.com/api-evangelist/gymshark/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://cdn.shopify.com/s/files/1/0098/8822/files/gymshark_social_banner_1200x1200.jpg?v=1549554764
 x-type: company
 x-source: harvest:secondary-market
