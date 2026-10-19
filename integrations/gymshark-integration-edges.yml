@@ -1,16 +1,101 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/gymshark/integrations
 - https://n8n.io/integrations/gymshark/
 - https://composio.dev/toolkits/gymshark
 - https://monid.ai/tools/gymshark
 checked:
+- https://api.nuget.org/v3
 - https://composio.dev/toolkits/gymshark
+- https://crates.io/api/v1
 - https://monid.ai/tools/gymshark
 - https://n8n.io/integrations/gymshark/
+- https://proxy.golang.org
+- https://pypi.org/pypi
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
 - https://zapier.com/apps/gymshark/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: Go module proxy
+  partner: null
+  partner_match: null
+  type: register
+  direction: provider-built
+  category: official SDK (Go)
+  evidence: https://pkg.go.dev/github.com/gymshark/aws-go-isb-client
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: Go module proxy (public registry JSON)
+    spec_file: null
+    language: Go
+    packages:
+    - name: github.com/gymshark/aws-go-isb-client
+      version: v1.3.0
+      released: '2026-09-18'
+      released_field: Time
+      lapsed: false
+      page: https://pkg.go.dev/github.com/gymshark/aws-go-isb-client
+      repo_leg: github-org:gymshark
+      publisher_leg: org:gymshark
+      matched_by: github-org
+    - name: github.com/gymshark/go-hasher
+      version: v1.0.0
+      released: '2021-02-26'
+      released_field: Time
+      lapsed: true
+      page: https://pkg.go.dev/github.com/gymshark/go-hasher
+      repo_leg: github-org:gymshark
+      publisher_leg: org:gymshark
+      matched_by: github-org
+    - name: github.com/gymshark/mparticle-go-sdk
+      version: v1.1.2
+      released: '2021-05-05'
+      released_field: Time
+      lapsed: true
+      page: https://pkg.go.dev/github.com/gymshark/mparticle-go-sdk
+      repo_leg: github-org:gymshark
+      publisher_leg: org:gymshark
+      matched_by: github-org
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
+- partner_name: npm registry
+  partner: npm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (JavaScript/TypeScript)
+  evidence: https://www.npmjs.com/package/@gymshark/datadog-client
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: '@gymshark/datadog-client'
+      version: 0.4.0
+      released: '2026-07-28'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@gymshark/datadog-client
+      repo_leg: github-org:gymshark
+      publisher_leg: email:gymshark.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
 templates: []
